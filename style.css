@@ -1,6 +1,23 @@
+@font-face {
+    font-family: Badaboom;
+    src: url(fonts/Badabb.ttf);
+}
+
+@font-face {
+    font-family: Inter;
+    src: url(fonts/Inter-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Inter bold';
+    src: url(fonts/Inter-Bold.ttf);
+}
+
+
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Inter bold';
 }
 
 body{
@@ -30,6 +47,26 @@ header{
 
 .machResult{
     font-size: 60pt;
+    font-family: Badaboom;
+}
+
+.turnMessage{
+    background-color: #FBF8BD;
+    border: solid black 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 40px;
+    color: #553535;
+}
+
+.turnText{
+    font-size: 15pt;
+}
+
+.turnPlayerName{
+    font-size: 30pt;
 }
 
 /*BOARD CSS---------------------------------------------------------------------------*/
@@ -38,7 +75,7 @@ header{
     background-color: rgb(255, 255, 255);
     width: 100%;
     height: 100%;
-    border: solid black 5px  ;
+    border: solid black 5px;
     grid-column: 4 / 7;
     grid-row: 2 / 5;
     display: flex;
@@ -52,7 +89,7 @@ header{
     background-color: white;
     width: 100%;
     height: 100%;
-    border: solid black 5px  ;
+    border: solid black 5px;
     margin: 3px 3px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -75,4 +112,41 @@ header{
     font-size: 25pt;
     font-weight: 800;
     
+}
+
+/*WINNER MESSAGE CSS---------------------------------------------------------------------------*/
+
+.winnerContainer{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+}
+
+#player1{
+    background-color: #FFF500;
+    grid-column: 2 / 5;
+    grid-row: 2 / 5;
+    color: aqua;
+}
+
+#player2{
+    background-color: #FFF500;
+    grid-column: 6 / 9;
+    grid-row: 2 / 5;
+    color: aqua;
+}
+
+.winnerText{
+    color: black;
+    font-size: 30pt;
+}
+
+.winStrong{
+    color: rgb(77, 77, 77);
+    font-size: 60pt;
+    font-family: Badaboom;
 }
