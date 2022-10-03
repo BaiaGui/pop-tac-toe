@@ -8,6 +8,22 @@
     <title>Pop Tac Toe</title>
 </head>
 <body>
+    <div class="darkScreen">
+        <div class="messageContainer"><p class="nameMessage">Digite o nome dos jogadores:</p></div>
+        <div class="modalContainer">
+            <div class="modalSide" id="p1Side">
+                <label for="player1Name" class="labelForm">Jogador O</label>
+                <input type="text" form="form" placeholder="Nome Jogador 1" id="player1Name" class="inputText">
+            </div>
+            <div class="modalSide" id="p2Side">
+                <label for="player2Name" class="labelForm">Jogador X</label>
+                <input type="text" form="form" placeholder="Nome Jogador 2" id="player2Name" class="inputText">
+            </div>
+        </div>
+        <form action="#" id="form">
+            <input type="submit" value="Confirmar" id="submitButton">
+        </form>
+    </div>
     <div class="boardContainerGrid">
         <header>
             <div id="p1" class="turnMessage">
