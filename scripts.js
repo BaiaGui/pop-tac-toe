@@ -24,7 +24,7 @@ turnMessageP1=document.querySelector("#p1");
 turnMessageP2=document.querySelector("#p2");
 
 winMessageContainerP1=document.querySelector("#player1");
-winMessageContainerP2=document.querySelector("#player1");
+winMessageContainerP2=document.querySelector("#player2");
 
 boardPiece=document.querySelectorAll(".imgBoard");
 }
@@ -68,15 +68,15 @@ function starGame(){
 function player1Turn(){
     playerTurn= 1;
     body.style.backgroundColor="blue";
-    turnMessageP2.style.visibility="hidden"
-    turnMessageP1.style.visibility="visible"
+    turnMessageP2.style.visibility="hidden";
+    turnMessageP1.style.visibility="visible";
     
 }
 function player2Turn(){
     playerTurn= 2;
     body.style.backgroundColor="red";
-    turnMessageP1.style.visibility="hidden"
-    turnMessageP2.style.visibility="visible"
+    turnMessageP1.style.visibility="hidden";
+    turnMessageP2.style.visibility="visible";
     
 }
 
@@ -93,7 +93,11 @@ function clickController(item){
         item.target.appendChild(img);
         item.target.removeEventListener("click", clickController);
         item.target.style.cursor="auto";
-        player2Turn();
+        item.target.classList.add("o");
+        if(checkWin("o"))
+            showWinnerMessage("o");
+        else
+            player2Turn();
     }
     else{
         let img = document.createElement("img");
@@ -101,12 +105,56 @@ function clickController(item){
         item.target.appendChild(img);
         item.target.removeEventListener("click", clickController);
         item.target.style.cursor="auto";
-        player1Turn();
+        item.target.classList.add("x");
+        if(checkWin("x"))
+            showWinnerMessage("x");
+        else
+            player1Turn();
     }
 }
 
+const COMBINATIONS=[
+[0, 1, 2],
+[3, 4, 5],
+[6, 7, 8],
+[0, 3, 6],
+[1, 4, 7],
+[2, 5, 8],
+[0, 4, 8],
+[2, 4, 6]
+];
 
+function checkWin(player){
+    let win =COMBINATIONS.some((comb)=>{
+        return comb.every((index)=>{
+            return boardPiece[index].classList.contains(player);
+        })
+    });
+    
+    if(win){
+        return true;
+    }
+}
 
+function verifyContent(index){
+        return boardPiece[index].classList.contains(player);
+
+}
+
+function showWinnerMessage(player){
+    if(player=="o"){
+    let board=document.querySelector(".board");
+    turnMessageP1.style.visibility="hidden";
+    board.style.cssText="transform: translate(250px);";
+    winMessageContainerP1.style.display="block";
+    }
+    else{
+        let board=document.querySelector(".board");
+        turnMessageP2.style.visibility="hidden";
+        board.style.cssText="transform: translate(-250px);";
+        winMessageContainerP2.style.display="block";
+    }
+}
 
 //pegar célula tabuleiro
 
