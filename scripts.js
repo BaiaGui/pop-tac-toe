@@ -1,7 +1,7 @@
 //Lógica Modal
 let p1Name, p2Name, submitButton, modal, startBtn, body;
 
-let turnMessageP1, turnMessageP2, winMessageContainerP1, winMessageContainerP2;
+let turnMessageP1, turnMessageP2, winMessageContainerP1, winMessageContainerP2, boardPiece;
 //To change name
 let strongPlayer1Name, strongPlayer2Name, winPlayerName1, winPlayerName2;
 
@@ -26,7 +26,7 @@ turnMessageP2=document.querySelector("#p2");
 winMessageContainerP1=document.querySelector("#player1");
 winMessageContainerP2=document.querySelector("#player1");
 
-
+boardPiece=document.querySelectorAll(".imgBoard");
 }
 
 
@@ -61,14 +61,19 @@ function starGame(){
         player2Turn();
         
     startBtn.style.display="none";
+    boardPiece.forEach(function(item){item.addEventListener("click", clickController)});
+    console.log(boardPiece);
+    boardPiece.forEach(function(item){item.style.cursor="pointer"});
 }
 function player1Turn(){
+    playerTurn= 1;
     body.style.backgroundColor="blue";
     turnMessageP2.style.visibility="hidden"
     turnMessageP1.style.visibility="visible"
     
 }
 function player2Turn(){
+    playerTurn= 2;
     body.style.backgroundColor="red";
     turnMessageP1.style.visibility="hidden"
     turnMessageP2.style.visibility="visible"
@@ -77,6 +82,28 @@ function player2Turn(){
 
 //GAME 
 
+
+function clickController(item){
+    let imgItem;
+    if(playerTurn==1){
+
+        let img = document.createElement("img");
+        img.src = "img/O.svg";
+        imgItem=boardPiece.id
+        item.target.appendChild(img);
+        item.target.removeEventListener("click", clickController);
+        item.target.style.cursor="auto";
+        player2Turn();
+    }
+    else{
+        let img = document.createElement("img");
+        img.src = "img/X.svg";
+        item.target.appendChild(img);
+        item.target.removeEventListener("click", clickController);
+        item.target.style.cursor="auto";
+        player1Turn();
+    }
+}
 
 
 
