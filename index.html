@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="style.css">
     <title>Pop Tac Toe</title>
 </head>
-<body>
+<body onload="getElements()">
     <div class="darkScreen">
         <div class="messageContainer"><p class="nameMessage">Digite o nome dos jogadores:</p></div>
         <div class="modalContainer">
             <div class="modalSide" id="p1Side">
                 <label for="player1Name" class="labelForm">Jogador O</label>
-                <input type="text" form="form" placeholder="Nome Jogador 1" id="player1Name" class="inputText">
+                <input type="text" placeholder="Nome Jogador 1" id="player1Name" class="inputText">
             </div>
             <div class="modalSide" id="p2Side">
                 <label for="player2Name" class="labelForm">Jogador X</label>
-                <input type="text" form="form" placeholder="Nome Jogador 2" id="player2Name" class="inputText">
+                <input type="text" placeholder="Nome Jogador 2" id="player2Name" class="inputText">
             </div>
         </div>
-        <form action="#" id="form">
+        <div id="form">
             <input type="submit" value="Confirmar" id="submitButton">
-        </form>
+        </div>
     </div>
     <div class="boardContainerGrid">
         <header>
@@ -37,24 +38,24 @@
             </div>
         </header>
         <div class="board">
-            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha"></div>
-            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha"></div>
-            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha"></div>
-            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha"></div>
-            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha"></div>
-            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha"></div>
-            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha"></div>
-            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha"></div>
-            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha"></div>
+            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha" id="b1"></div>
+            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha" id="b2"></div>
+            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha" id="b3"></div>
+            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha" id="b4"></div>
+            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha" id="b5"></div>
+            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha" id="b6"></div>
+            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha" id="b7"></div>
+            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha" id="b8"></div>
+            <div class="imgBoard"><img src="img/O.svg" alt="Simbolo bolinha" id="b9"></div>
             
  
         </div>
         <button class="startBtn"><p class="startBtnText">START</p></button>
         <div id="player1" class="winnerContainer" >
-            <p class="winnerText">Player_name <br><strong class="machResult">VENCEU!!!</strong></p>
+            <p class="winnerText"><label>Player_name</label><br><strong class="machResult">VENCEU!!!</strong></p>
         </div>
         <div id="player2" class="winnerContainer" >
-            <p class="winnerText">Player_name <br><strong class="machResult">VENCEU!!!</strong></p>
+            <p class="winnerText"><label>Player_name</label><br><strong class="machResult">VENCEU!!!</strong></p>
         </div>  
     </div>
     <script type="text/javascript" src="scripts.js"></script>
