@@ -5,6 +5,7 @@ let turnMessageP1, turnMessageP2, winMessageContainerP1, winMessageContainerP2, 
 //To change name
 let strongPlayer1Name, strongPlayer2Name, winPlayerName1, winPlayerName2;
 
+let contClick=0;;
 
 function getElements(){
 
@@ -85,8 +86,8 @@ function player2Turn(){
 
 function clickController(item){
     let imgItem;
+    contClick++;
     if(playerTurn==1){
-
         let img = document.createElement("img");
         img.src = "img/O.svg";
         imgItem=boardPiece.id
@@ -96,8 +97,11 @@ function clickController(item){
         item.target.classList.add("o");
         if(checkWin("o"))
             showWinnerMessage("o");
-        else
+        if(checkTie())
+            formatTie();
+        if(!checkWin("o") && !checkTie())
             player2Turn();
+        
     }
     else{
         let img = document.createElement("img");
@@ -108,7 +112,9 @@ function clickController(item){
         item.target.classList.add("x");
         if(checkWin("x"))
             showWinnerMessage("x");
-        else
+        if(checkTie())
+            formatTie();
+        if(!checkWin("x") && !checkTie())
             player1Turn();
     }
 }
@@ -130,15 +136,8 @@ function checkWin(player){
             return boardPiece[index].classList.contains(player);
         })
     });
-    
-    if(win){
-        return true;
-    }
-}
-
-function verifyContent(index){
-        return boardPiece[index].classList.contains(player);
-
+  
+        return win
 }
 
 function showWinnerMessage(player){
@@ -146,20 +145,29 @@ function showWinnerMessage(player){
     let board=document.querySelector(".board");
     turnMessageP1.style.visibility="hidden";
     board.style.cssText="transform: translate(250px);";
-    winMessageContainerP1.style.display="block";
+    winMessageContainerP1.style.display="flex";
     }
     else{
         let board=document.querySelector(".board");
         turnMessageP2.style.visibility="hidden";
         board.style.cssText="transform: translate(-250px);";
-        winMessageContainerP2.style.display="block";
+        winMessageContainerP2.style.display="flex";
     }
 }
 
-//pegar célula tabuleiro
+//Remove All event listener from board
+let tieMessage=document.querySelector("#tie");
 
-//adicionar evento onclick em cada célula
+function checkTie(){
+    if(contClick>=9 && !checkWin("o") && !checkWin("x"))
+        return true;
+    else
+        return false;
+}
 
-//código evento onclick célula
-
-//
+function formatTie(){
+    body.style.cssText="bacground-color: gray; transition: 0.5s;";
+    turnMessageP1.style.visibility="hidden";
+    turnMessageP2.style.visibility="hidden";
+    tieMessage.style.cssText="display: block; transition: 0.5s;";
+}
