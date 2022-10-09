@@ -63,7 +63,6 @@ function starGame(){
         
     startBtn.style.display="none";
     boardPiece.forEach(function(item){item.addEventListener("click", clickController)});
-    console.log(boardPiece);
     boardPiece.forEach(function(item){item.style.cursor="pointer"});
 }
 function player1Turn(){
@@ -142,20 +141,27 @@ function checkWin(player){
 
 function showWinnerMessage(player){
     if(player=="o"){
-    let board=document.querySelector(".board");
-    turnMessageP1.style.visibility="hidden";
-    board.style.cssText="transform: translate(250px);";
-    winMessageContainerP1.style.display="flex";
+        let board=document.querySelector(".board");
+        turnMessageP1.style.visibility="hidden";
+        board.style.cssText="transform: translate(250px);";
+        winMessageContainerP1.style.display="flex";
+        removeAllListeners();
     }
     else{
         let board=document.querySelector(".board");
         turnMessageP2.style.visibility="hidden";
         board.style.cssText="transform: translate(-250px);";
         winMessageContainerP2.style.display="flex";
+        removeAllListeners();
     }
 }
 
 //Remove All event listener from board
+function removeAllListeners(){
+    boardPiece.forEach(function(item){item.removeEventListener("click", clickController)});
+    boardPiece.forEach(function(item){item.style.cursor="auto"});
+}
+
 let tieMessage=document.querySelector("#tie");
 
 function checkTie(){
