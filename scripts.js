@@ -1,5 +1,5 @@
 //Lógica Modal
-let p1Name, p2Name, submitButton, modal, startBtn, body;
+let p1Name, p2Name, submitButton, modal, startBtn, restartBtn, body;
 
 let turnMessageP1, turnMessageP2, winMessageContainerP1, winMessageContainerP2, boardPiece;
 //To change name
@@ -19,7 +19,10 @@ submitButton.addEventListener("click", getName);
 
 //Start
 startBtn= document.querySelector(".startBtn");
-startBtn.addEventListener("click", starGame);
+restartBtn= document.querySelectorAll(".restartWin");
+startBtn.addEventListener("click", startGame);
+restartBtn[0].addEventListener("click", startGame);
+restartBtn[1].addEventListener("click", startGame);
 
 //Player Especific Elements
 turnMessageP1=document.querySelector("#p1");
@@ -54,7 +57,7 @@ function setNames(){
 
 //STARTGAME
 
-function starGame(){
+function startGame(){
         if(contClick!=0)
             resetGame();
         contClick=0;
@@ -85,12 +88,25 @@ function player2Turn(){
 }
 
 function resetGame(){
-    boardPiece.forEach(function(item){item.removeChild(item.firstElementChild)});
-    boardPiece.forEach(function(item){item.classList.remove("o")});
-    boardPiece.forEach(function(item){item.classList.remove("x")});
+
+    //boardPiece.forEach(function(item){item.removeChild(item.firstElementChild)});
+    //boardPiece.forEach(function(item){item.classList.remove("o")});
+    //boardPiece.forEach(function(item){item.classList.remove("x")});
+    boardPiece.forEach(function(item){
+        if(item.firstElementChild!=null)
+            item.removeChild(item.firstElementChild);
+            item.classList.remove("o");
+            item.classList.remove("x");
+            
+    })
 
     body.style.cssText="transition: none;";
     tieMessage.style.cssText="visibility: hidden;";
+    winMessageContainerP1.style.display="none";
+    winMessageContainerP2.style.display="none";
+    board.style.cssText="transform: none;";
+
+
 }
 
 
@@ -98,12 +114,10 @@ function resetGame(){
 
 
 function clickController(item){
-    let imgItem;
     contClick++;
     if(playerTurn==1){
         let img = document.createElement("img");
         img.src = "img/O.svg";
-        imgItem=boardPiece.id
         item.target.appendChild(img);
         item.target.removeEventListener("click", clickController);
         item.target.style.cursor="auto";
@@ -153,9 +167,11 @@ function checkWin(player){
         return win
 }
 
+let board=document.querySelector(".board");
+
 function showWinnerMessage(player){
     if(player=="o"){
-        let board=document.querySelector(".board");
+        
         turnMessageP1.style.visibility="hidden";
         board.style.cssText="transform: translate(250px);";
         winMessageContainerP1.style.display="flex";
@@ -164,7 +180,6 @@ function showWinnerMessage(player){
 
     }
     else{
-        let board=document.querySelector(".board");
         turnMessageP2.style.visibility="hidden";
         board.style.cssText="transform: translate(-250px);";
         winMessageContainerP2.style.display="flex";
