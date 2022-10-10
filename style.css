@@ -109,7 +109,7 @@ header{
 }
 
 .startBtn:hover{
-    scale: 1.1;
+    transform: scale(1.1);
 }
 
 .startBtnText{
@@ -248,7 +248,7 @@ header{
 }
 
 #submitButton:hover{
-    scale: 1.1;
+    transform: scale(1.1);
 }
 
 .messageContainer{
