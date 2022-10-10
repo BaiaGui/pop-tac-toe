@@ -175,7 +175,7 @@ header{
 
 .winnerText{
     color: white;
-    font-size: 30pt;
+    font-size: 40pt;
 }
 
 
@@ -220,11 +220,11 @@ header{
 }
 
 #p1Side{
-   background-color: blue;
+   background-color:#158cfa;
 }
 
 #p2Side{
-    background-color: red;
+    background-color: #ff3131;
 }
 
 #form{
@@ -283,7 +283,11 @@ header{
 }
 
 .labelForm{
-    font-size: 65pt;
+    font-size: 55pt;
+}
+
+.modalImg{
+    width: 70px;
 }
 
 /* ANIMATIONS----------------------------------------------

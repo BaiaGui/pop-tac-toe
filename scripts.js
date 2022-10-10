@@ -27,11 +27,12 @@ restartBtn[1].addEventListener("click", startGame);
 //Player Especific Elements
 turnMessageP1=document.querySelector("#p1");
 turnMessageP2=document.querySelector("#p2");
-
 winMessageContainerP1=document.querySelector("#player1");
 winMessageContainerP2=document.querySelector("#player2");
 
 boardPiece=document.querySelectorAll(".imgBoard");
+wonText=document.querySelectorAll(".machResult");
+
 }
 
 
@@ -74,24 +75,20 @@ function startGame(){
 }
 function player1Turn(){
     playerTurn= 1;
-    body.style.backgroundColor="blue";
+    body.style.backgroundColor="#158cfa";
     turnMessageP2.style.visibility="hidden";
     turnMessageP1.style.visibility="visible";
     
 }
 function player2Turn(){
     playerTurn= 2;
-    body.style.backgroundColor="red";
+    body.style.backgroundColor="#ff3131";
     turnMessageP1.style.visibility="hidden";
     turnMessageP2.style.visibility="visible";
     
 }
 
 function resetGame(){
-
-    //boardPiece.forEach(function(item){item.removeChild(item.firstElementChild)});
-    //boardPiece.forEach(function(item){item.classList.remove("o")});
-    //boardPiece.forEach(function(item){item.classList.remove("x")});
     boardPiece.forEach(function(item){
         if(item.firstElementChild!=null)
             item.removeChild(item.firstElementChild);
@@ -171,7 +168,7 @@ let board=document.querySelector(".board");
 
 function showWinnerMessage(player){
     if(player=="o"){
-        
+        wonText[0].style.color="#3D5697";
         turnMessageP1.style.visibility="hidden";
         board.style.cssText="transform: translate(250px);";
         winMessageContainerP1.style.display="flex";
@@ -180,6 +177,7 @@ function showWinnerMessage(player){
 
     }
     else{
+        wonText[1].style.color="#A02D57";
         turnMessageP2.style.visibility="hidden";
         board.style.cssText="transform: translate(-250px);";
         winMessageContainerP2.style.display="flex";
