@@ -1,5 +1,5 @@
 # pop-tac-toe
-Tic tac toe game website 
+Tic tac toe game website made in JS
 <h4 align="center"> 
-	✔  Finalizado ✔
+	✔  Finished ✔
 </h4>
