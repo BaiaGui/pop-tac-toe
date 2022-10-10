@@ -53,14 +53,10 @@ header{
     color: black;
 }
 
-.display{
-    display: none;
-}
 
-#p1, #p2{
+#p1, #p2, #tie{
     visibility: hidden;
 }
-
 
 
 .turnMessage{
@@ -122,6 +118,25 @@ header{
     
 }
 
+#restartP1{
+    font-size: 20pt;
+    margin: 0px;
+    grid-column: 6;
+    grid-row: 4;
+}
+
+.pt20{
+    font-size: 20pt;
+}
+
+.restartWin{
+    margin: 10px 0 0 0;
+    border-radius: 0px;
+    width: auto;
+    height: auto;
+    padding: 10px;
+}
+
 .imgBoard{
     background-color: white;
     display: flex;
@@ -139,6 +154,7 @@ header{
     justify-content: center;
     width: 450px;
     height: 400px;
+    flex-direction: column;
 
 
 }

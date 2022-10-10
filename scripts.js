@@ -5,7 +5,8 @@ let turnMessageP1, turnMessageP2, winMessageContainerP1, winMessageContainerP2, 
 //To change name
 let strongPlayer1Name, strongPlayer2Name, winPlayerName1, winPlayerName2;
 
-let contClick=0;;
+let contClick=0;
+let playerTurn;
 
 function getElements(){
 
@@ -52,18 +53,21 @@ function setNames(){
 }
 
 //STARTGAME
-let playerTurn=1;
+
 function starGame(){
-    playerTurn=Math.floor(Math.random() * 2) + 1;
-    console.log(playerTurn);
-    if(playerTurn==1)
-        player1Turn();
-    else
-        player2Turn();
-        
-    startBtn.style.display="none";
-    boardPiece.forEach(function(item){item.addEventListener("click", clickController)});
-    boardPiece.forEach(function(item){item.style.cursor="pointer"});
+        if(contClick!=0)
+            resetGame();
+        contClick=0;
+        playerTurn=Math.floor(Math.random() * 2) + 1;
+        console.log(playerTurn);
+        if(playerTurn==1)
+            player1Turn();
+        else
+            player2Turn();
+            
+        startBtn.style.display="none";
+        boardPiece.forEach(function(item){item.addEventListener("click", clickController)});
+        boardPiece.forEach(function(item){item.style.cursor="pointer"});
 }
 function player1Turn(){
     playerTurn= 1;
@@ -79,6 +83,16 @@ function player2Turn(){
     turnMessageP2.style.visibility="visible";
     
 }
+
+function resetGame(){
+    boardPiece.forEach(function(item){item.removeChild(item.firstElementChild)});
+    boardPiece.forEach(function(item){item.classList.remove("o")});
+    boardPiece.forEach(function(item){item.classList.remove("x")});
+
+    body.style.cssText="transition: none;";
+    tieMessage.style.cssText="visibility: hidden;";
+}
+
 
 //GAME 
 
@@ -146,6 +160,8 @@ function showWinnerMessage(player){
         board.style.cssText="transform: translate(250px);";
         winMessageContainerP1.style.display="flex";
         removeAllListeners();
+
+
     }
     else{
         let board=document.querySelector(".board");
@@ -153,6 +169,7 @@ function showWinnerMessage(player){
         board.style.cssText="transform: translate(-250px);";
         winMessageContainerP2.style.display="flex";
         removeAllListeners();
+
     }
 }
 
@@ -175,5 +192,8 @@ function formatTie(){
     body.style.cssText="bacground-color: gray; transition: 0.5s;";
     turnMessageP1.style.visibility="hidden";
     turnMessageP2.style.visibility="hidden";
-    tieMessage.style.cssText="display: block; transition: 0.5s;";
+    tieMessage.style.cssText="transition: 0.5s; visibility: visible; ";
+    startBtn.style.display="block";
+    startBtn.firstElementChild.innerText="RESTART";
+    startBtn.firstElementChild.style.fontSize="20pt";
 }
