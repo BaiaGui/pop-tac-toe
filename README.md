@@ -1,5 +1,3 @@
 # pop-tac-toe
-Tic tac toe game website made in JS
-<h4 align="center"> 
-	✔  Finished ✔
-</h4>
+Um jogo da velha com temática de pop art. Construído com HTML, CSS e JavaScript, esse projeto permite que dois jogadores alternem seus turnos para estrategicamente colocar suas marcas e competir pela vitória.<br><br>
+⭐Jogue agora em: https://poptactoe.onrender.com
